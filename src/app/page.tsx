@@ -30,7 +30,7 @@ export default function HomePage() {
         body: JSON.stringify({ mood, genre, inspiration }),
       });
 
-      if (!response.ok) throw new Error('Gagal mendapatkan rekomendasi dari server');
+      if (!response.ok) throw new Error('Failed to fetch game recommendation');
 
       const data: Result = await response.json();
       setResult(data);
@@ -45,10 +45,10 @@ export default function HomePage() {
     <main className="flex min-h-screen flex-col items-center justify-center p-12 bg-[#1a1c20] text-white font-mono">
       <div className="w-full max-w-2xl">
         <h1 className="text-5xl font-bold text-center mb-2 uppercase tracking-widest">
-          AI Game Finder
+          Game Matcher
         </h1>
         <p className="text-center text-gray-400 mb-8">
-          Biarkan AI yang memilihkan game untukmu.
+          Let AI choose the games for you.
         </p>
 
         <form
@@ -57,7 +57,7 @@ export default function HomePage() {
         >
           <div>
             <label htmlFor="mood" className="block mb-2 text-sm font-bold">
-              Mood Permainan
+              Game Mood
             </label>
             <select
               id="mood"
@@ -65,21 +65,21 @@ export default function HomePage() {
               onChange={(e) => setMood(e.target.value)}
               className="w-full p-3 border-2 border-black bg-[#1e1f23] text-white rounded-md shadow-[4px_4px_0px_0px_black] cursor-pointer"
             >
-              <option>Santai & Kreatif</option>
-              <option>Penuh Aksi & Cepat</option>
-              <option>Menantang & Butuh Mikir</option>
-              <option>Penuh Cerita & Emosional</option>
-              <option>Seru & Kompetitif</option>
-              <option>Petualangan & Eksplorasi</option>
-              <option>Relaksasi & Meditasi</option>
-              <option>Multiplayer & Sosial</option>
-              <option>Retro & Nostalgia</option>
+              <option>Relaxed and Creative</option>
+              <option>Action-Packed and Fast-Paced</option>
+              <option>Challenging and Thought-Provoking</option>
+              <option>Story-Driven and Emotional</option>
+              <option>Exciting and Competitive</option>
+              <option>Adventure and Exploration</option>
+              <option>Relaxation and Meditation</option>
+              <option>Multiplayer and Social</option>
+              <option>Retro and Nostalgia</option>
             </select>
           </div>
 
           <div>
             <label htmlFor="genre" className="block mb-2 text-sm font-bold">
-              Genre Favorit
+              Favorite Genre
             </label>
             <select
               id="genre"
@@ -87,11 +87,13 @@ export default function HomePage() {
               onChange={(e) => setGenre(e.target.value)}
               className="w-full p-3 border-2 border-black bg-[#1e1f23] text-white rounded-md shadow-[4px_4px_0px_0px_black] cursor-pointer"
             >
-              <option>Simulasi</option>
+              <option>Simulation</option>
               <option>RPG</option>
-              <option>Strategi</option>
+              <option>Strategy</option>
               <option>Shooter</option>
               <option>Adventure</option>
+              <option>Action</option>
+              <option>Anime</option>
               <option>Indie</option>
               <option>Horror</option>
               <option>Multiplayer Online</option>
@@ -105,7 +107,7 @@ export default function HomePage() {
               htmlFor="inspiration"
               className="block mb-2 text-sm font-bold"
             >
-              Mirip dengan game... (Opsional)
+              Similar to... (Optional)
             </label>
             <input
               type="text"
@@ -113,7 +115,7 @@ export default function HomePage() {
               value={inspiration}
               onChange={(e) => setInspiration(e.target.value)}
               className="w-full p-3 border-2 border-black bg-[#1e1f23] text-white rounded-md shadow-[4px_4px_0px_0px_black]"
-              placeholder="Contoh: Stardew Valley"
+              placeholder="Example: Stardew Valley"
             />
           </div>
 
@@ -122,13 +124,13 @@ export default function HomePage() {
             disabled={loading}
             className="w-full bg-[#ff6600] text-white font-bold text-lg py-3 px-6 border-4 border-black shadow-[4px_4px_0_#000000,8px_8px_0_#000000] hover:bg-[#ff7f00] hover:shadow-[2px_2px_0_#000000,4px_4px_0_#000000] active:shadow-none active:translate-x-[4px] active:translate-y-[4px]  transition-all cursor-pointer"
           >
-            {loading ? 'Mencari...' : 'Temukan Game-ku'}
+            {loading ? 'Searching...' : 'Find My Game'}
           </button>
         </form>
 
         {loading && (
           <p className="text-center mt-8 font-bold text-gray-300">
-            AI sedang berpikir...
+            Matching the game for you...
           </p>
         )}
 
@@ -143,7 +145,7 @@ export default function HomePage() {
             <p className="text-sm text-gray-400 mb-4">{result.platform}</p>
             <p className="mb-4">
               <strong className="text-orange-400">
-                Kenapa AI merekomendasikan ini:
+                Why AI recommends this:
               </strong>{' '}
               {result.ringkasan}
             </p>
@@ -153,10 +155,10 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="inline-block bg-green-500 hover:bg-green-600 text-white font-bold border-4 border-black rounded-md px-5 py-2.5 shadow-[4px_4px_0px_0px_black]"
             >
-              🎮 Lihat di Toko
+              🎮 See in Store
             </a>
             <div className="mt-4">
-              <h3 className="font-bold mb-2">💡 Tips Memulai:</h3>
+              <h3 className="font-bold mb-2">💡 Tips for Getting Started:</h3>
               <ul className="list-disc list-inside space-y-1 text-gray-300">
                 {result.tips.map((tip, index) => (
                   <li key={index}>{tip}</li>
