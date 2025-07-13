@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Joypad Compass",
-  description: "Temukan game yang cocok untukmu dengan bantuan AI.",
+  title: "Game Matcher",
+  description: "Let AI choose the games for you.",
 };
 
 export default function RootLayout({
