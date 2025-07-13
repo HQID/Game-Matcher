@@ -12,8 +12,8 @@ interface Result {
 }
 
 export default function HomePage() {
-  const [mood, setMood] = useState<string>('Santai & Kreatif');
-  const [genre, setGenre] = useState<string>('Simulasi');
+  const [mood, setMood] = useState<string>('Relaxed & Creative');
+  const [genre, setGenre] = useState<string>('Simulation');
   const [inspiration, setInspiration] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [result, setResult] = useState<Result | null>(null);
