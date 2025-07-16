@@ -174,7 +174,7 @@ export default function HomePage() {
                   🎮 See in Store
                 </a>
                 <div className="mt-4">
-                  <h3 className="font-bold mb-2">💡 Tips Memulai:</h3>
+                  <h3 className="font-bold mb-2">💡 Getting Started Tips:</h3>
                   <ul className="list-disc list-inside space-y-1 text-gray-300">
                     {result.tips.map((tip, tipIndex) => (
                       <li key={tipIndex}>{tip}</li>
